@@ -10,15 +10,15 @@ interface FilterPanelProps {
 }
 
 const filterOptions = {
-  type: ["Internship", "Full-Time"] as RoleType[],
+  type: ["Internship", "Full-Time"] as const,
   department: [
     "Tech",
     "Marketing & Growth",
     "Business",
     "Core Engineering",
     "Growth Team",
-  ] as Department[],
-  experience: ["Internship", "1-2 Years", "1-3 Years"] as ExperienceLevel[],
+  ] as const,
+  experience: ["Internship", "1-2 Years", "1-3 Years"] as const,
 };
 
 export function FilterPanel({
@@ -26,11 +26,11 @@ export function FilterPanel({
   onFilterChange,
   onClearAll,
 }: FilterPanelProps) {
-  const toggleFilter = <K extends keyof RoleFilters>(
-    key: K,
-    value: NonNullable<RoleFilters[K]>[number]
+  const toggleFilter = (
+    key: keyof RoleFilters,
+    value: RoleType | Department | ExperienceLevel
   ) => {
-    const current = filters[key] || [];
+    const current = (filters[key] || []) as (RoleType | Department | ExperienceLevel)[];
     const newValues = current.includes(value)
       ? current.filter((v) => v !== value)
       : [...current, value];
@@ -38,7 +38,7 @@ export function FilterPanel({
     onFilterChange({
       ...filters,
       [key]: newValues.length > 0 ? newValues : undefined,
-    });
+    } as RoleFilters);
   };
 
   const activeFilterCount =
