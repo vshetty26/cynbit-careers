@@ -2,7 +2,8 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #0a0a0a;
+  --foreground: #000000;
+  --brutalist-border: 4px;
 }
 
 @theme inline {
@@ -16,21 +17,34 @@ body {
   color: var(--foreground);
 }
 
-/* Custom scrollbar */
+/* Brutalist scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 16px;
+  height: 16px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #ffffff;
+  border: 3px solid #000000;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
-  border-radius: 4px;
+  background: #000000;
+  border: 3px solid #ffffff;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a1a1a1;
+  background: #ff0000;
+}
+
+/* Brutalist selection */
+::selection {
+  background: #ff0000;
+  color: #ffffff;
+}
+
+/* Brutalist focus styles */
+*:focus {
+  outline: 4px solid #000000 !important;
+  outline-offset: 4px;
 }

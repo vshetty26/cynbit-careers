@@ -26,27 +26,27 @@ export function RoleCard({ role }: RoleCardProps) {
   return (
     <Link
       href={`/careers/${role.slug}`}
-      className="block group bg-white border border-gray-200 rounded-lg p-6 hover:border-gray-900 hover:shadow-md transition-all duration-200"
+      className="block group bg-white border-4 border-black p-6 hover:bg-yellow-300 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all active:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
     >
-      <div className="flex items-start justify-between mb-3">
+      <div className="flex items-start justify-between mb-4">
         <div className="flex-1">
-          <h3 className="text-lg font-semibold text-gray-900 group-hover:text-gray-700 transition-colors">
+          <h3 className="text-xl font-black uppercase text-black mb-3">
             {role.title}
           </h3>
-          <div className="flex items-center gap-2 mt-2 flex-wrap">
+          <div className="flex items-center gap-2 flex-wrap">
             <Badge variant="default">{role.type}</Badge>
             <Badge variant="secondary">{role.department}</Badge>
-            <span className="text-sm text-gray-500">{role.location}</span>
+            <span className="text-sm font-bold uppercase tracking-wider">{role.location}</span>
           </div>
         </div>
         <button
           onClick={handleSaveToggle}
-          className="ml-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
+          className="ml-4 p-3 bg-white border-4 border-black hover:bg-red-600 hover:text-white transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]"
           aria-label={saved ? "Unsave role" : "Save role"}
         >
           {saved ? (
             <svg
-              className="w-5 h-5 text-gray-900"
+              className="w-5 h-5"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
@@ -54,15 +54,15 @@ export function RoleCard({ role }: RoleCardProps) {
             </svg>
           ) : (
             <svg
-              className="w-5 h-5 text-gray-400"
+              className="w-5 h-5"
               fill="none"
               stroke="currentColor"
+              strokeWidth={3}
               viewBox="0 0 20 20"
             >
               <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
+                strokeLinecap="square"
+                strokeLinejoin="miter"
                 d="M5 5a2 2 0 012-2h6a2 2 0 012 2v14l-5-3.5L5 19V5z"
               />
             </svg>
@@ -70,19 +70,19 @@ export function RoleCard({ role }: RoleCardProps) {
         </button>
       </div>
 
-      <p className="text-gray-600 text-sm line-clamp-2 mb-3">{role.summary}</p>
+      <p className="text-black font-medium leading-relaxed mb-4">{role.summary}</p>
 
-      <div className="flex flex-wrap gap-1.5">
+      <div className="flex flex-wrap gap-2">
         {role.skills.slice(0, 4).map((skill) => (
           <span
             key={skill}
-            className="text-xs px-2 py-1 bg-gray-50 text-gray-600 rounded"
+            className="text-xs font-bold uppercase px-3 py-1.5 bg-white border-2 border-black"
           >
             {skill}
           </span>
         ))}
         {role.skills.length > 4 && (
-          <span className="text-xs px-2 py-1 text-gray-500">
+          <span className="text-xs font-bold uppercase px-3 py-1.5 border-2 border-black">
             +{role.skills.length - 4} more
           </span>
         )}

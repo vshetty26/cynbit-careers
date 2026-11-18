@@ -9,19 +9,19 @@ interface SortControlProps {
 
 export function SortControl({ value, onChange }: SortControlProps) {
   return (
-    <div className="flex items-center gap-2">
-      <label htmlFor="sort" className="text-sm font-medium text-gray-700">
-        Sort by:
+    <div className="flex items-center gap-3">
+      <label htmlFor="sort" className="text-sm font-black uppercase text-black">
+        SORT:
       </label>
       <select
         id="sort"
         value={value}
         onChange={(e) => onChange(e.target.value as SortOption)}
-        className="px-3 py-1.5 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+        className="px-4 py-2 border-4 border-black bg-white text-black font-bold uppercase focus:outline-none focus:border-red-600 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] cursor-pointer transition-all"
       >
-        <option value="relevance">Relevance</option>
+        <option value="relevance">RELEVANCE</option>
         <option value="a-z">A-Z</option>
-        <option value="internships-first">Internships First</option>
+        <option value="internships-first">INTERNSHIPS FIRST</option>
       </select>
     </div>
   );

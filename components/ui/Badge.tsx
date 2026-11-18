@@ -10,14 +10,14 @@ export function Badge({
   className = "",
 }: BadgeProps) {
   const variants = {
-    default: "bg-gray-900 text-white",
-    secondary: "bg-gray-100 text-gray-900",
-    outline: "border border-gray-300 text-gray-700",
+    default: "bg-black text-white border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]",
+    secondary: "bg-yellow-300 text-black border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]",
+    outline: "bg-white border-4 border-black text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]",
   };
 
   return (
     <span
-      className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${variants[variant]} ${className}`}
+      className={`inline-flex items-center px-3 py-1 text-xs font-black uppercase tracking-wider ${variants[variant]} ${className}`}
     >
       {children}
     </span>

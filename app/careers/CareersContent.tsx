@@ -57,47 +57,49 @@ export function CareersContent() {
   }, [searchQuery, filters, sortBy]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex items-center justify-between">
+      <header className="bg-yellow-300 border-b-8 border-black">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="flex items-center justify-between flex-wrap gap-4">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Cynbit Careers</h1>
-              <p className="mt-1 text-gray-600">
-                Architect human-centric software solutions with us
+              <h1 className="text-5xl font-black uppercase text-black mb-2 tracking-tight">
+                CYNBIT CAREERS
+              </h1>
+              <p className="text-lg font-bold text-black uppercase tracking-wide">
+                → Architect human-centric software
               </p>
             </div>
             <div className="flex items-center gap-4">
               <Link
                 href="/careers/matcher"
-                className="px-4 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-800 transition-colors font-medium"
+                className="px-6 py-3 bg-black text-white border-4 border-black hover:bg-red-600 font-black uppercase shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all"
               >
-                Find Your Match
+                FIND MATCH
               </Link>
               <a
                 href="https://www.cynbit.in"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-gray-900 transition-colors"
+                className="px-6 py-3 bg-white text-black border-4 border-black hover:bg-cyan-300 font-black uppercase shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all"
               >
-                Back to Cynbit
+                ← BACK
               </a>
             </div>
           </div>
         </div>
       </header>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Search */}
-        <div className="mb-6">
+        <div className="mb-8">
           <SearchBar
             value={searchQuery}
             onChange={setSearchQuery}
           />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Sidebar Filters */}
           <aside className="lg:col-span-1">
             <FilterPanel
@@ -109,10 +111,10 @@ export function CareersContent() {
 
           {/* Main Content */}
           <main className="lg:col-span-3">
-            <div className="flex items-center justify-between mb-6">
-              <p className="text-sm text-gray-600">
-                <span className="font-semibold">{filteredRoles.length}</span> role
-                {filteredRoles.length !== 1 ? "s" : ""} found
+            <div className="flex items-center justify-between mb-8 pb-4 border-b-4 border-black">
+              <p className="text-lg font-black uppercase">
+                <span className="text-3xl text-red-600">{filteredRoles.length}</span> ROLE
+                {filteredRoles.length !== 1 ? "S" : ""} FOUND
               </p>
               <SortControl
                 value={sortBy as SortOption}
@@ -122,59 +124,58 @@ export function CareersContent() {
 
             {/* Roles Grid */}
             {filteredRoles.length > 0 ? (
-              <div className="grid grid-cols-1 gap-4">
+              <div className="grid grid-cols-1 gap-6">
                 {filteredRoles.map((role) => (
                   <RoleCard key={role.slug} role={role} />
                 ))}
               </div>
             ) : (
-              <div className="text-center py-12 bg-white border border-gray-200 rounded-lg">
+              <div className="text-center py-16 bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                 <svg
-                  className="mx-auto h-12 w-12 text-gray-400 mb-4"
+                  className="mx-auto h-16 w-16 text-black mb-6"
                   fill="none"
                   stroke="currentColor"
+                  strokeWidth={4}
                   viewBox="0 0 24 24"
                 >
                   <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
+                    strokeLinecap="square"
+                    strokeLinejoin="miter"
                     d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M12 12h.01M12 21a9 9 0 100-18 9 9 0 000 18z"
                   />
                 </svg>
-                <h3 className="text-lg font-medium text-gray-900 mb-1">
-                  No roles found
+                <h3 className="text-2xl font-black uppercase text-black mb-3">
+                  NO ROLES FOUND
                 </h3>
-                <p className="text-gray-600 mb-4">
-                  Try adjusting your search or filters
+                <p className="text-lg font-bold text-black mb-6 uppercase">
+                  Try adjusting filters
                 </p>
                 <button
                   onClick={() => {
                     setSearchQuery("");
                     handleClearFilters();
                   }}
-                  className="text-sm text-gray-900 underline hover:no-underline"
+                  className="px-6 py-3 bg-black text-white border-4 border-black hover:bg-red-600 font-black uppercase shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all"
                 >
-                  Clear all filters
+                  CLEAR ALL
                 </button>
               </div>
             )}
 
             {/* Fallback CTA */}
-            <div className="mt-12 bg-white border border-gray-200 rounded-lg p-8 text-center">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                Don't see your role?
+            <div className="mt-12 bg-lime-300 border-4 border-black p-10 text-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+              <h3 className="text-3xl font-black uppercase text-black mb-4">
+                DON'T SEE YOUR ROLE?
               </h3>
-              <p className="text-gray-600 mb-4">
-                We're always looking for architects of the future. Send us your
-                portfolio and tell us how you can contribute to the Cynbit software
-                vision.
+              <p className="text-lg font-bold text-black mb-6 uppercase max-w-2xl mx-auto">
+                → We're always looking for architects of the future. Send your
+                portfolio and tell us how you can contribute →
               </p>
               <a
                 href="mailto:careers@cynbit.in"
-                className="inline-flex items-center px-6 py-3 bg-gray-900 text-white rounded-md hover:bg-gray-800 transition-colors font-medium"
+                className="inline-flex items-center px-8 py-4 bg-black text-white border-4 border-black hover:bg-red-600 font-black uppercase shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all"
               >
-                Get in Touch
+                GET IN TOUCH →
               </a>
             </div>
           </main>

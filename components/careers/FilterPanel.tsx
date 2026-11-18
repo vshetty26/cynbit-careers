@@ -47,15 +47,15 @@ export function FilterPanel({
     (filters.experience?.length || 0);
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-6">
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold text-gray-900">Filters</h3>
+    <div className="bg-cyan-300 border-4 border-black p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+      <div className="flex items-center justify-between mb-6 pb-4 border-b-4 border-black">
+        <h3 className="text-2xl font-black uppercase text-black">FILTERS</h3>
         {activeFilterCount > 0 && (
           <button
             onClick={onClearAll}
-            className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+            className="text-sm font-black uppercase text-black hover:text-red-600 transition-colors px-3 py-1 border-2 border-black hover:bg-red-600 hover:text-white"
           >
-            Clear all ({activeFilterCount})
+            ✕ {activeFilterCount}
           </button>
         )}
       </div>
@@ -63,17 +63,19 @@ export function FilterPanel({
       <div className="space-y-6">
         {/* Type Filter */}
         <div>
-          <h4 className="text-sm font-medium text-gray-900 mb-3">Type</h4>
-          <div className="space-y-2">
+          <h4 className="text-lg font-black uppercase text-black mb-3 border-b-2 border-black pb-2">TYPE</h4>
+          <div className="space-y-3">
             {filterOptions.type.map((type) => (
-              <label key={type} className="flex items-center cursor-pointer">
+              <label key={type} className="flex items-center cursor-pointer group">
                 <input
                   type="checkbox"
                   checked={filters.type?.includes(type) || false}
                   onChange={() => toggleFilter("type", type)}
-                  className="w-4 h-4 text-gray-900 border-gray-300 rounded focus:ring-gray-900"
+                  className="w-6 h-6 border-4 border-black checked:bg-black focus:ring-0 focus:ring-offset-0 cursor-pointer"
                 />
-                <span className="ml-2 text-sm text-gray-700">{type}</span>
+                <span className="ml-3 text-base font-bold uppercase text-black group-hover:text-red-600 transition-colors">
+                  {type}
+                </span>
               </label>
             ))}
           </div>
@@ -81,17 +83,19 @@ export function FilterPanel({
 
         {/* Department Filter */}
         <div>
-          <h4 className="text-sm font-medium text-gray-900 mb-3">Department</h4>
-          <div className="space-y-2">
+          <h4 className="text-lg font-black uppercase text-black mb-3 border-b-2 border-black pb-2">DEPARTMENT</h4>
+          <div className="space-y-3">
             {filterOptions.department.map((dept) => (
-              <label key={dept} className="flex items-center cursor-pointer">
+              <label key={dept} className="flex items-center cursor-pointer group">
                 <input
                   type="checkbox"
                   checked={filters.department?.includes(dept) || false}
                   onChange={() => toggleFilter("department", dept)}
-                  className="w-4 h-4 text-gray-900 border-gray-300 rounded focus:ring-gray-900"
+                  className="w-6 h-6 border-4 border-black checked:bg-black focus:ring-0 focus:ring-offset-0 cursor-pointer"
                 />
-                <span className="ml-2 text-sm text-gray-700">{dept}</span>
+                <span className="ml-3 text-base font-bold uppercase text-black group-hover:text-red-600 transition-colors">
+                  {dept}
+                </span>
               </label>
             ))}
           </div>
@@ -99,17 +103,19 @@ export function FilterPanel({
 
         {/* Experience Filter */}
         <div>
-          <h4 className="text-sm font-medium text-gray-900 mb-3">Experience</h4>
-          <div className="space-y-2">
+          <h4 className="text-lg font-black uppercase text-black mb-3 border-b-2 border-black pb-2">EXPERIENCE</h4>
+          <div className="space-y-3">
             {filterOptions.experience.map((exp) => (
-              <label key={exp} className="flex items-center cursor-pointer">
+              <label key={exp} className="flex items-center cursor-pointer group">
                 <input
                   type="checkbox"
                   checked={filters.experience?.includes(exp) || false}
                   onChange={() => toggleFilter("experience", exp)}
-                  className="w-4 h-4 text-gray-900 border-gray-300 rounded focus:ring-gray-900"
+                  className="w-6 h-6 border-4 border-black checked:bg-black focus:ring-0 focus:ring-offset-0 cursor-pointer"
                 />
-                <span className="ml-2 text-sm text-gray-700">{exp}</span>
+                <span className="ml-3 text-base font-bold uppercase text-black group-hover:text-red-600 transition-colors">
+                  {exp}
+                </span>
               </label>
             ))}
           </div>
